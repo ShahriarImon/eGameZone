@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import "./App.css";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
-import Navbar from "./Compoents/Navbar";
+import Navbar from "./Compoents/Navbar/Navbar";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -15,7 +15,6 @@ function App() {
         "left main" `,
         }}
         gap="1"
-        color="blackAlpha.700"
         fontWeight="bold"
       >
         <GridItem area={"header"}>
