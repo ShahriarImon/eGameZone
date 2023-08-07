@@ -1,6 +1,6 @@
 import { HStack } from "@chakra-ui/layout";
-import { FormControl, FormLabel, Switch } from "@chakra-ui/react";
-import React from "react";
+import { FormControl, FormLabel, Image, Switch } from "@chakra-ui/react";
+import logo from "../assets/gameZone.png";
 
 const Navbar = () => {
   return (
@@ -8,14 +8,20 @@ const Navbar = () => {
       justifyContent={"space-between"}
       alignItems={"center"}
       w={"100%"}
-      padding={5}
+      paddingX={5}
+      paddingY={2}
     >
-      <div>Navbar</div>
-      <FormControl display="flex" alignItems="center" justifyContent={"right"}>
+      <Image src={logo} h={"50px"} />
+      <FormControl
+        display="flex"
+        alignItems="center"
+        justifyContent={"right"}
+        gap={1}
+      >
+        <Switch id="email-alerts" colorScheme={"green"} />{" "}
         <FormLabel htmlFor="email-alerts" mb="0">
-          Enable email alerts?
+          Dark mode
         </FormLabel>
-        <Switch id="email-alerts" />
       </FormControl>
     </HStack>
   );

@@ -18,7 +18,7 @@ function App() {
         color="blackAlpha.700"
         fontWeight="bold"
       >
-        <GridItem area={"header"} bg={"red"}>
+        <GridItem area={"header"}>
           <Navbar />
         </GridItem>
         <Show above="lg">
