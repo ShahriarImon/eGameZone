@@ -1,30 +1,34 @@
-import { Grid, GridItem, Text } from "@chakra-ui/layout";
-import useGames from "../../../react-query/Hooks/useGames";
-import { FetchGamesResponse } from "../../../react-query/services/useGameService";
+import { Grid, GridItem, SimpleGrid, Text } from "@chakra-ui/layout";
+import useGames, {
+  FetchGamesResponse,
+} from "../../../react-query/Hooks/useGames";
 import { useState } from "react";
+import { AxiosError } from "axios";
+import GameCard from "./GameCard/GameCard";
 
 const GameGrid = () => {
   const [userId, setUserId] = useState<number>();
   const [pageNo, setPageNo] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(5);
 
-  const { data: games, error } = useGames<FetchGamesResponse>({
+  const { data: games } = useGames<FetchGamesResponse>({
     userId,
     pageNo,
     pageSize,
   });
   console.log("games:", games);
-  console.log("errorr434:", error);
 
   return (
     <div>
-      <Grid templateColumns="repeat(4, 1fr)" gap={2}>
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+        gap={5}
+        padding={"10px"}
+      >
         {games?.results?.map((ele) => (
-          <GridItem key={ele?.id} w="100%" h="10">
-            <Text>{ele?.name}</Text>
-          </GridItem>
+          <GameCard game={ele} key={ele?.id} />
         ))}
-      </Grid>
+      </SimpleGrid>
     </div>
   );
 };

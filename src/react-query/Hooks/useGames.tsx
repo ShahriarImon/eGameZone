@@ -1,10 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
-import useGameService, { FetchGamesResponse } from "../services/useGameService";
+import useGameService from "../services/useGameService";
 
 export interface gameQuery {
   pageNo: number;
   pageSize: number;
   userId: number | undefined;
+}
+
+export interface Game {
+  id: number;
+  name: string;
+  background_image: "string";
+}
+
+export interface FetchGamesResponse {
+  count: number;
+  results: Game[];
 }
 
 const useGames = (query: gameQuery) => {
