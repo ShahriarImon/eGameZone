@@ -2,6 +2,7 @@
 import "./App.css";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import Navbar from "./Compoents/Navbar/Navbar";
+import GameGrid from "./Compoents/Main/GameGrid/GameGrid";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -25,8 +26,8 @@ function App() {
             Left
           </GridItem>
         </Show>{" "}
-        <GridItem area={"main"} bg={"coral"}>
-          Main
+        <GridItem area={"main"}>
+          <GameGrid />
         </GridItem>
       </Grid>
     </div>

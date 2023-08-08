@@ -1,12 +1,12 @@
 import { Text, useColorMode } from "@chakra-ui/react";
-import { FormControl, Switch } from "@chakra-ui/react";
+import { HStack, Switch } from "@chakra-ui/react";
 
 const ColorModeToggle = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <div>
-      <FormControl
+      <HStack
         display="flex"
         alignItems="center"
         justifyContent={"right"}
@@ -19,7 +19,7 @@ const ColorModeToggle = () => {
           onChange={toggleColorMode}
         />{" "}
         <Text>Dark mode</Text>
-      </FormControl>
+      </HStack>
     </div>
   );
 };
