@@ -1,15 +1,25 @@
-import { Card, Image, Text, VStack } from "@chakra-ui/react";
+import { Card, CardBody, HStack, Image, Stack, Text } from "@chakra-ui/react";
 import { Game } from "../../../../react-query/Hooks/useGames";
-interface gameProps {
+import PlatFormIcons from "./Compo/PlatFormIcons";
+import Critics from "./Compo/Critics";
+interface props {
   game: Game;
 }
-const GameCard = ({ game }: gameProps) => {
+const GameCard = ({ game }: props) => {
   return (
     <Card borderRadius={"10px"} overflow={"hidden"}>
-      <VStack gap={5}>
+      <Stack>
         <Image src={game?.background_image} />
-        <Text fontSize={"2xl"}>{game?.name}</Text>
-      </VStack>
+        <CardBody>
+          <Stack>
+            <Text fontSize={"2xl"}>{game?.name}</Text>
+            <HStack justifyContent="space-between">
+              <PlatFormIcons pPlatform={game?.parent_platforms} />
+              <Critics critic={game?.metacritic} />
+            </HStack>
+          </Stack>
+        </CardBody>
+      </Stack>
     </Card>
   );
 };
