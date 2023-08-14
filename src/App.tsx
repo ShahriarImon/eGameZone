@@ -1,36 +1,19 @@
 // import { useState } from "react";
 import "./App.css";
-import { Grid, GridItem, Show } from "@chakra-ui/react";
-import Navbar from "./Compoents/Navbar/Navbar";
-import GameGrid from "./Compoents/Main/GameGrid/GameGrid";
+import Raff from "./Components/Raff/Raff";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
 
 function App() {
   // const [count, setCount] = useState(0);
 
   return (
-    <div style={{ width: "100%" }}>
-      <Grid
-        templateAreas={{
-          base: `"header" "main" `,
-          lg: `"header header"
-        "left main" `,
-        }}
-        gap="1"
-        fontWeight="bold"
-      >
-        <GridItem area={"header"}>
-          <Navbar />
-        </GridItem>
-        <Show above="lg">
-          <GridItem area={"left"} bg={"green"}>
-            Left
-          </GridItem>
-        </Show>{" "}
-        <GridItem area={"main"}>
-          <GameGrid />
-        </GridItem>
-      </Grid>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/raff" element={<Raff />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import { todoQuery } from "../useTodos";
-import usePostService, { Post } from "../../services/useGameService";
+import usePostService, { Post } from "../../services/useDataService";
 
 interface previousDataContext {
   previousData: Post[];

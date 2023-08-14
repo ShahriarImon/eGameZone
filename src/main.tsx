@@ -13,7 +13,7 @@ const config = {
 };
 
 const queryClient = new QueryClient({
-  defaultOptions: { queries: { refetchOnWindowFocus: false } },
+  defaultOptions: { queries: { refetchOnWindowFocus: false, suspense: true } },
 });
 const theme = extendTheme({ config });
 

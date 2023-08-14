@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import useGameService from "../services/useGameService";
+import APIClient, { FetchResponse } from "../services/apiClient";
 
 export interface gameQuery {
   pageNo: number;
@@ -15,23 +15,17 @@ export interface platform {
 export interface Game {
   id: number;
   name: string;
-  background_image: "string";
+  background_image: string;
   parent_platforms: { platform: platform }[];
   metacritic: number;
 }
 
-export interface FetchGamesResponse {
-  count: number;
-  results: Game[];
-}
-
 const useGames = (query: gameQuery) => {
-  const todoService = useGameService(query);
+  const todoService = new APIClient<Game>("/games", query);
 
-  return useQuery<FetchGamesResponse, Error>({
+  return useQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", query],
-    queryFn: todoService.getAll,
-    // queryFn: fetchTodo,
+    queryFn: todoService.get,
     staleTime: 5000,
     keepPreviousData: true,
   });

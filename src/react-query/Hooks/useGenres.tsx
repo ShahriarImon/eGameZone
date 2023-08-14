@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import useGenreservice from "../services/useGenreservice";
+import APIClient, { FetchResponse } from "../services/apiClient";
 
 export interface GenreQuery {
   pageNo: number;
@@ -15,23 +15,17 @@ export interface platform {
 export interface Genre {
   id: number;
   name: string;
-  background_image: "string";
-  parent_platforms: { platform: platform }[];
-  metacritic: number;
-}
-
-export interface FetchGenresResponse {
-  count: number;
-  results: Genre[];
+  image_background: string;
+  slug: string;
+  games_count: number;
 }
 
 const useGenres = (query: GenreQuery) => {
-  const todoService = useGenreservice(query);
+  const todoService = new APIClient<Genre>("/genres", query);
 
-  return useQuery<FetchGenresResponse, Error>({
+  return useQuery<FetchResponse<Genre>, Error>({
     queryKey: ["Genres", query],
-    queryFn: todoService.getAll,
-    // queryFn: fetchTodo,
+    queryFn: todoService.get,
     staleTime: 5000,
     keepPreviousData: true,
   });
