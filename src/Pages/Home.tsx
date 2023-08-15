@@ -1,12 +1,13 @@
-import { Grid, GridItem, Show, SimpleGrid } from "@chakra-ui/react";
+import { Grid, GridItem, Show } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar/Navbar";
 import GameGrid from "../Components/Main/GameGrid/GameGrid";
 import Genres from "../Components/LeftBar/Genres";
 import { Suspense } from "react";
 import SkeletonGC from "../Components/Main/GameGrid/GameCard/SkeletonGC";
 import SkeletonGenre from "../Components/LeftBar/Compo/GenreCard/compo/SkeletonGenre";
-import ErrorBoundary from "../Hooks/ErrorBoundary";
+import ErrorBoundary from "../Hooks/Error Boundary/ErrorBoundary";
 import { InfoIcon } from "@chakra-ui/icons";
+import ErrorMSG from "../Hooks/Error Boundary/ErrorSMS";
 
 const Home = () => {
   return (
@@ -37,13 +38,7 @@ const Home = () => {
         </GridItem>
         <Show above="lg">
           <GridItem area={"left"}>
-            <ErrorBoundary
-              fallback={
-                <h4 style={{ padding: "20px" }}>
-                  <InfoIcon color="#d90d0d" /> Error in genres
-                </h4>
-              }
-            >
+            <ErrorBoundary fallback={<ErrorMSG errorPlace={"genres"} />}>
               <Suspense fallback={<SkeletonGenre />}>
                 <Genres />
               </Suspense>
@@ -51,13 +46,7 @@ const Home = () => {
           </GridItem>
         </Show>
         <GridItem area={"main"}>
-          <ErrorBoundary
-            fallback={
-              <h4 style={{ padding: "20px" }}>
-                <InfoIcon color="#d90d0d" /> Error in games
-              </h4>
-            }
-          >
+          <ErrorBoundary fallback={<ErrorMSG errorPlace={"games"} />}>
             <Suspense fallback={<SkeletonGC />}>
               <GameGrid />
             </Suspense>

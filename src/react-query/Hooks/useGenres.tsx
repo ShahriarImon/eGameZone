@@ -20,11 +20,11 @@ export interface Genre {
   games_count: number;
 }
 
-const useGenres = (query: GenreQuery) => {
-  const todoService = new APIClient<Genre>("/genres", query);
+const useGenres = () => {
+  const todoService = new APIClient<Genre>("/genres");
 
   return useQuery<FetchResponse<Genre>, Error>({
-    queryKey: ["Genres", query],
+    queryKey: ["Genres"],
     queryFn: todoService.get,
     staleTime: 5000,
     keepPreviousData: true,

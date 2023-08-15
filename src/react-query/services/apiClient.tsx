@@ -1,29 +1,22 @@
-import axios from "axios";
-import { gameQuery } from "../Hooks/useGames";
+import axios, { AxiosRequestConfig } from "axios";
 export interface FetchResponse<T> {
   count: number;
   results: T[];
 }
 const axiosInstance = axios.create({
   baseURL: "https://api.rawg.io/api",
+  params: { key: "00917201171e40f5a31e4509e8f9f614" },
 });
 class APIClient<T> {
   endPoint: string;
-  query: gameQuery;
-  constructor(endPoint: string, query: gameQuery) {
+  requestConfig?: AxiosRequestConfig;
+  constructor(endPoint: string, requestConfig?: AxiosRequestConfig) {
     this.endPoint = endPoint;
-    this.query = query;
+    this.requestConfig = requestConfig;
   }
   get = () => {
     return axiosInstance
-      .get<FetchResponse<T>>(this.endPoint, {
-        params: {
-          userId: this.query?.userId,
-          _start: (this.query?.pageNo - 1) * this.query?.pageSize,
-          _limit: this.query?.pageSize,
-          key: "00917201171e40f5a31e4509e8f9f614",
-        },
-      })
+      .get<FetchResponse<T>>(this.endPoint, this.requestConfig)
       .then((res) => res.data);
   };
   // post = (data: T) => {

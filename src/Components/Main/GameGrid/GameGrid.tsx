@@ -1,6 +1,6 @@
 import { SimpleGrid } from "@chakra-ui/layout";
 import useGames from "../../../react-query/Hooks/useGames";
-// import { useState } from "react";
+import { motion } from "framer-motion";
 import GameCard from "./GameCard/GameCard";
 
 const GameGrid = () => {
@@ -27,7 +27,9 @@ const GameGrid = () => {
         padding={"10px"}
       >
         {games?.results?.map((ele) => (
-          <GameCard game={ele} key={ele?.id} />
+          <motion.div animate={{ opacity: 1 }}>
+            <GameCard game={ele} key={ele?.id} />
+          </motion.div>
         ))}
       </SimpleGrid>{" "}
     </div>

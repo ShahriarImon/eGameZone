@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient, { FetchResponse } from "../services/apiClient";
+import useGameQuery from "../../store/useGameQuery";
 
 export interface gameQuery {
   pageNo: number;
@@ -20,11 +21,12 @@ export interface Game {
   metacritic: number;
 }
 
-const useGames = (query: gameQuery) => {
-  const todoService = new APIClient<Game>("/games", query);
+const useGames = () => {
+  const gameQuery = useGameQuery((s) => s.gameQuery);
+  const todoService = new APIClient<Game>("/games", { params: gameQuery });
 
   return useQuery<FetchResponse<Game>, Error>({
-    queryKey: ["games", query],
+    queryKey: ["games", gameQuery],
     queryFn: todoService.get,
     staleTime: 5000,
     keepPreviousData: true,
