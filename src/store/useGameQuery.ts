@@ -3,7 +3,7 @@ import { create } from "zustand";
 interface GameQuery {
   genres?: number;
   searchText?: string;
-  orderedBy?: string;
+  ordering?: string;
   platforms?: number;
   pageNo?: string;
   totalPage?: string;
@@ -12,7 +12,7 @@ interface GameQuery {
 interface GameQueryStore {
   gameQuery: GameQuery;
   setGenres: (genres: number) => void;
-  setOrderedBy: (orderedBy: string) => void;
+  setOrdering: (ordering: string) => void;
   setSearchText: (searchText: string) => void;
   setPlatforms: (platforms: number) => void;
 }
@@ -26,9 +26,9 @@ const useGameQuery = create<GameQueryStore>((set) => ({
     set((store) => ({
       gameQuery: { ...store.gameQuery, genres: genres },
     })),
-  setOrderedBy: (orderedBy) =>
+  setOrdering: (ordering) =>
     set((store) => ({
-      gameQuery: { ...store.gameQuery, orderedBy },
+      gameQuery: { ...store.gameQuery, ordering },
     })),
   setPlatforms: (platforms) =>
     set((store) => ({ gameQuery: { ...store.gameQuery, platforms } })),

@@ -5,7 +5,7 @@ import GenreCard from "./Compo/GenreCard/GenreCard";
 const Genres = () => {
   const { data: genres } = useGenres();
   return (
-    <Stack padding={"20px"} gap={3}>
+    <Stack paddingX={"20px"} gap={3.5}>
       {genres?.results?.map((ele) => (
         <GenreCard genre={ele} key={ele?.id} />
       ))}

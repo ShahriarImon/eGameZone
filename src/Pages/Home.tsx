@@ -21,7 +21,7 @@ const Home = () => {
         }}
         templateColumns={{
           base: `1fr`,
-          lg: "200px 1fr",
+          lg: "250px 1fr",
         }}
         gap="1"
         fontWeight="bold"
@@ -38,7 +38,7 @@ const Home = () => {
           </ErrorBoundary>
         </GridItem>
         <Show above="lg">
-          <GridItem area={"left"}>
+          <GridItem area={"left"} marginTop={5}>
             <ErrorBoundary fallback={<ErrorMSG errorPlace={"genres"} />}>
               <Suspense fallback={<SkeletonGenre />}>
                 <Genres />
@@ -46,7 +46,7 @@ const Home = () => {
             </ErrorBoundary>
           </GridItem>
         </Show>
-        <GridItem area={"main"}>
+        <GridItem area={"main"} marginTop={5}>
           <FilterBoard />
           <ErrorBoundary fallback={<ErrorMSG errorPlace={"games"} />}>
             <Suspense fallback={<SkeletonGC />}>

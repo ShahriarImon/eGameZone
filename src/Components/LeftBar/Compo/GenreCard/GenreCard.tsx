@@ -22,7 +22,7 @@ const GenreCard = ({ genre }: props) => {
       <Button
         variant={"link"}
         fontWeight={genres === genre?.id ? "bold" : "normal"}
-        fontSize={"13pt"}
+        fontSize={"18pt"}
         onClick={() => {
           setGenres(genre?.id);
         }}

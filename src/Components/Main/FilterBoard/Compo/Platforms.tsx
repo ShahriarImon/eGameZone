@@ -5,11 +5,18 @@ import useGameQuery from "../../../../store/useGameQuery";
 
 const Platforms = () => {
   const { data: platformList } = usePlatform();
-  const setPlatforms = useGameQuery((s) => s.setPlatforms);
+  const [platforms, setPlatforms] = useGameQuery((s) => [
+    s.gameQuery.platforms,
+    s.setPlatforms,
+  ]);
+  const selectedPlatforms = platformList?.results?.find(
+    (ele) => ele?.id === platforms
+  );
+
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-        Platform
+        {selectedPlatforms?.name ? selectedPlatforms?.name : "Platform"}
       </MenuButton>
       <MenuList>
         {platformList?.results?.map((ele) => (
