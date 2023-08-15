@@ -1,4 +1,4 @@
-import { HStack, Text } from "@chakra-ui/layout";
+import { HStack } from "@chakra-ui/layout";
 import { Button, Image } from "@chakra-ui/react";
 import { Genre } from "../../../../react-query/Hooks/useGenres";
 import useImgUrlCrop from "../../../../react-query/services/ImageUrlCrop";
@@ -27,7 +27,9 @@ const GenreCard = ({ genre }: props) => {
           setGenres(genre?.id);
         }}
       >
-        {genre?.name}
+        {genre?.name?.length > 12
+          ? genre?.name?.slice(0, 12) + "..."
+          : genre?.name}
       </Button>
     </HStack>
   );

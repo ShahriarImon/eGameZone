@@ -8,6 +8,7 @@ import SkeletonGenre from "../Components/LeftBar/Compo/GenreCard/compo/SkeletonG
 import ErrorBoundary from "../Hooks/Error Boundary/ErrorBoundary";
 import { InfoIcon } from "@chakra-ui/icons";
 import ErrorMSG from "../Hooks/Error Boundary/ErrorSMS";
+import FilterBoard from "../Components/Main/FilterBoard/FilterBoard";
 
 const Home = () => {
   return (
@@ -46,6 +47,7 @@ const Home = () => {
           </GridItem>
         </Show>
         <GridItem area={"main"}>
+          <FilterBoard />
           <ErrorBoundary fallback={<ErrorMSG errorPlace={"games"} />}>
             <Suspense fallback={<SkeletonGC />}>
               <GameGrid />

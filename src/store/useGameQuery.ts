@@ -4,7 +4,7 @@ interface GameQuery {
   genres?: number;
   searchText?: string;
   orderedBy?: string;
-  platform?: string;
+  platforms?: number;
   pageNo?: string;
   totalPage?: string;
 }
@@ -14,7 +14,7 @@ interface GameQueryStore {
   setGenres: (genres: number) => void;
   setOrderedBy: (orderedBy: string) => void;
   setSearchText: (searchText: string) => void;
-  setPlatform: (platform: string) => void;
+  setPlatforms: (platforms: number) => void;
 }
 const useGameQuery = create<GameQueryStore>((set) => ({
   gameQuery: {},
@@ -30,8 +30,8 @@ const useGameQuery = create<GameQueryStore>((set) => ({
     set((store) => ({
       gameQuery: { ...store.gameQuery, orderedBy },
     })),
-  setPlatform: (platform) =>
-    set((store) => ({ gameQuery: { ...store.gameQuery, platform } })),
+  setPlatforms: (platforms) =>
+    set((store) => ({ gameQuery: { ...store.gameQuery, platforms } })),
 }));
 
 export default useGameQuery;

@@ -4,20 +4,7 @@ import { motion } from "framer-motion";
 import GameCard from "./GameCard/GameCard";
 
 const GameGrid = () => {
-  // const [userId, setUserId] = useState<number>();
-  // const [pageNo, setPageNo] = useState<number>(1);
-  // const [pageSize, setPageSize] = useState<number>(5);
-  // {
-  //   userId,
-  //   pageNo,
-  //   pageSize,
-  // }
-  const { data: games } = useGames({
-    pageNo: 1,
-    userId: 2,
-    pageSize: 3,
-  });
-  console.log("games:", games);
+  const { data: games } = useGames();
 
   return (
     <div>

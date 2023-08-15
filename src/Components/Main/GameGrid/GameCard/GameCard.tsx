@@ -9,11 +9,11 @@ interface props {
 const GameCard = ({ game }: props) => {
   return (
     <Card borderRadius={"10px"} overflow={"hidden"}>
-      <Stack>
+      <Stack gap={0}>
         <Image src={useImgUrlCrop(game?.background_image)} />
         <CardBody>
-          <Stack>
-            <Text fontSize={"2xl"}>{game?.name}</Text>
+          <Stack height={"90px"} overflow={"hidden"}>
+            <Text fontSize={"1.2rem"}>{game?.name}</Text>
             <HStack justifyContent="space-between">
               <PlatFormIcons pPlatform={game?.parent_platforms} />
               <Critics critic={game?.metacritic} />
